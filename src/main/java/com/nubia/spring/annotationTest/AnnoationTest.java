@@ -14,8 +14,8 @@ import com.nubia.spring.service.PersonService;
  */
 public class AnnoationTest {
 	public static void main(String[] args) {
-		//ApplicationContext act = new ClassPathXmlApplicationContext("BeanAnnotation.xml");
-		TudouClassPathXmlApplicationContext act = new TudouClassPathXmlApplicationContext("BeanAnnotation.xml");
+		ApplicationContext act = new ClassPathXmlApplicationContext("BeanAnnotation.xml");
+		//TudouClassPathXmlApplicationContext act = new TudouClassPathXmlApplicationContext("BeanAnnotation.xml");
 		PersonService personService = (PersonService)act.getBean("personService");
 		personService.save();
 	}
