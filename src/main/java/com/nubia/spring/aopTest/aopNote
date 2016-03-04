@@ -1,0 +1,5 @@
+使用代理模拟aop功能
+Proxy分为使用JDK和CgLib两种方式
+	JDK:定义一个功能接口，然后让Proxy 和RealSubject来实现这个接口。
+	Cglib:因为如果Proxy 继承自RealSubject，这样;则拥有了RealSubject的功能，
+			Proxy还可以通过重写RealSubject中的方法，来实现多态。

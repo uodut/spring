@@ -3,7 +3,6 @@ package com.nubia.spring;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.nubia.spring.annotationTest.Boss;
 import com.nubia.spring.dao.impl.PersonDaoBean;
 import com.nubia.spring.service.PersonService;
 
