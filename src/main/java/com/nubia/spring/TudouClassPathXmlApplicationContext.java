@@ -1,5 +1,6 @@
 package com.nubia.spring;
 
+import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
@@ -22,9 +23,9 @@ import com.nubia.spring.annotationTest.TudouResource;
  * 自制容器
  */
 public class TudouClassPathXmlApplicationContext {
-	//存储XML的bean对应的自定义的BeanDefinition
+	//beanDefines存储XML里的bean对象
 	private List<BeanDefinition> beanDefines = new ArrayList<BeanDefinition>();
-	//String=id,Object=Bean对象
+	//String=id,Object=Bean对象，sigletons的object对象存储bean里面的class对象
 	private Map<String, Object> sigletons = new HashMap<String, Object>();
 
 	public TudouClassPathXmlApplicationContext(String filename) {
@@ -44,10 +45,13 @@ public class TudouClassPathXmlApplicationContext {
 	 * 			1）查看是否有相应注解标注
 	 * 					如果有：查找注解的name值，如果有name值
 	 * 		对于setter()方法
+	 * 		
 	 */
 	private void annotationInject() {
-		for (BeanDefinition bean : beanDefines) {
+		for (String beanName : sigletons.keySet()) {
+		  Object bean = sigletons.get(beanName);
 			if (bean != null) {
+				try {
 				// 对bean的成员变量进行判断
 				Field[] fields = bean.getClass().getDeclaredFields();
 				for (Field field : fields) {
@@ -82,16 +86,49 @@ public class TudouClassPathXmlApplicationContext {
 								}
 							}
 						}
-						try {
+						
 							// 给属性赋值
 							field.setAccessible(true);// 防止属性访问权限是私有的而不能赋值
 							field.set(bean, value);
-						} catch (Exception e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+					}
+				}
+				//对setter方法注入值
+					PropertyDescriptor[] propertyDescriptors = Introspector.getBeanInfo(bean.getClass()).getPropertyDescriptors();
+					for(PropertyDescriptor propertyDescriptor:propertyDescriptors){
+						Method method = propertyDescriptor.getWriteMethod();//写方法，即setter方法
+						//如果setter不为空并且上面有注解
+						if(method != null && method.isAnnotationPresent(TudouResource.class)){
+							//注解是否存在name值，区别于是否写出来了，没表示出来也有默认的值
+							TudouResource tudouResource = method.getAnnotation(TudouResource.class);
+							Object value = null;
+							if(tudouResource.name()!= null && !"".equals(tudouResource.name())){
+								value = sigletons.get(tudouResource.name());
+							}else{
+								//比较类型
+								//通过属性名找对应的bean
+								value = sigletons.get(propertyDescriptor.getName());
+								//如果找不到，就按类型进行查找
+								if(value==null){
+									//遍历所有的bean对象
+									for(String key : sigletons.keySet()){
+										//如果属性类型和bean类型一致
+										if(propertyDescriptor.getPropertyType().isAssignableFrom(sigletons.get(key).getClass())){
+											value = sigletons.get(key);
+											break;
+										}
+									}
+								}	
+								
+							}
+							method.setAccessible(true);
+							method.invoke(bean, value);
 						}
 					}
 				}
+				catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+			}
 			}
 		}
 	}

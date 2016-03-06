@@ -4,15 +4,27 @@ package com.nubia.spring.dao.impl;
 import com.nubia.spring.dao.PersonDao;
 
 public class PersonDaoBean implements PersonDao {
-	private User user;
+	private String userInfo;
 	
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(String userInfo) {
+		this.userInfo = userInfo;
 	}
-	public User getUser() {
-		return user;
+	public String getUserInfo() {
+		return userInfo;
 	}
-	@Override
+
+
+	public void setUserInfo(String userInfo) {
+		this.userInfo = userInfo;
+	}
+
+
+	public PersonDaoBean(String userInfo) {
+		this.userInfo = userInfo;
+	}
+	
+	public PersonDaoBean() {
+	}
 	public void print() {
 		// TODO Auto-generated method stub
 		System.out.println("PersonDao的print()方法实现");

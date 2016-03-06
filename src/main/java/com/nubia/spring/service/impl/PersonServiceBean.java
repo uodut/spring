@@ -8,16 +8,15 @@ import com.nubia.spring.dao.PersonDao;
 import com.nubia.spring.service.PersonService;
 
 public class PersonServiceBean implements PersonService {
-	@TudouResource
+	
 	private PersonDao personDao;
-	@Override
 	public void save() {
 		personDao.print();
 	}
 	public PersonDao getPersonDao() {
 		return personDao;
 	}
-	
+	@TudouResource(name="personDao")
 	public void setPersonDao(PersonDao personDao) {
 		this.personDao = personDao;
 	}

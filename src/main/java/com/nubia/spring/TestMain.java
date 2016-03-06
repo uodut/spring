@@ -12,11 +12,11 @@ public class TestMain {
 		// TODO Auto-generated constructor stub
 	}
 	public static void main(String[] args) {
-		ApplicationContext act = new ClassPathXmlApplicationContext("beanTest.xml");
-		//TudouClassPathXmlApplicationContext act = new TudouClassPathXmlApplicationContext("beanTest.xml");
+		//ApplicationContext act = new ClassPathXmlApplicationContext("beanTest.xml");
+		TudouClassPathXmlApplicationContext act = new TudouClassPathXmlApplicationContext("beanTest.xml");
 		
-		/*PersonService pdl = (PersonService)act.getBean("personService");
-		pdl.save();*/
+		PersonService pdl = (PersonService)act.getBean("personService");
+		pdl.save();
 		
 		
 		

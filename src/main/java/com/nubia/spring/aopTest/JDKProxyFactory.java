@@ -19,14 +19,23 @@ public class JDKProxyFactory implements InvocationHandler {
 		Class<?>[] interfaces = this.targetObject.getClass().getInterfaces();
 		return Proxy.newProxyInstance(loader, interfaces, this);
 	}
-	@Override
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
 		PersonDaoBean bean = (PersonDaoBean)this.targetObject;
 		Object obj = null;
-		if (bean.getUser() != null) {
-			System.out.println("代理检测user不为空，可以调用此方法");
-			obj = method.invoke(targetObject, args);
+		if (bean.getUserInfo() != null) {
+			try {
+				//前置通知
+				System.out.println("代理检测user不为空，可以调用此方法");
+				obj = method.invoke(targetObject, args);
+				//后置通知
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				//例外通知
+			}finally{
+				//最终通知
+			}
 		}else{
 			System.out.println("代理检测user为空，没有权限调用它所属方法");
 		}
