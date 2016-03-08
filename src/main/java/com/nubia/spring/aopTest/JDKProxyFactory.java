@@ -3,6 +3,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import com.nubia.spring.dao.impl.PersonDaoBean;
+import com.nubia.spring.utils.Log;
 /**
  * 2016年3月4日
  * 
@@ -11,6 +12,7 @@ import com.nubia.spring.dao.impl.PersonDaoBean;
  */
 public class JDKProxyFactory implements InvocationHandler {
     private Object targetObject;// 目标对象
+    private String message = null;
     public Object getInstance(Object obj) {
         this.targetObject = obj;
         ClassLoader loader = this.targetObject.getClass().getClassLoader();
@@ -23,18 +25,21 @@ public class JDKProxyFactory implements InvocationHandler {
         if (bean.getUserInfo() != null) {
             try {
                 // 前置通知
-                System.out.println("代理检测user不为空，可以调用此方法");
+                message = "代理检测user不为空，可以调用此方法";
+                Log.createInstance(JDKProxyFactory.class).info(message);
+                //Log.createInstance(JDKProxyFactory.class).info();
                 obj = method.invoke(targetObject, args);
                 // 后置通知
-            } catch (Exception e) {
+            } catch (NullPointerException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
                 // 例外通知
-            } finally {
+            } finally{
                 // 最终通知
+                Log.createInstance(JDKProxyFactory.class).info("finally");
             }
         } else {
-            System.out.println("代理检测user为空，没有权限调用它所属方法");
+            Log.createInstance(JDKProxyFactory.class).info("代理检测user为空，没有权限调用它所属方法");
         }
         return obj;
     }

@@ -1,5 +1,6 @@
 package com.nubia.spring.dao.impl;
 import com.nubia.spring.dao.PersonDao;
+import com.nubia.spring.utils.Log;
 public class PersonDaoBean implements PersonDao {
     private String userInfo;
     public void setUser(String userInfo) {
@@ -18,6 +19,7 @@ public class PersonDaoBean implements PersonDao {
     }
     public void print() {
         // TODO Auto-generated method stub
-        System.out.println("PersonDao的print()方法实现");
+        //System.out.println();
+        Log.createInstance(PersonDaoBean.class).info("PersonDao的print()方法实现");
     }
 }
