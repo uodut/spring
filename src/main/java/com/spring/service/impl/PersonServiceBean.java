@@ -1,8 +1,8 @@
-package com.nubia.spring.service.impl;
+package com.spring.service.impl;
 //import javax.annotation.Resource;
-import com.nubia.spring.annotationTest.TudouResource;
-import com.nubia.spring.dao.PersonDao;
-import com.nubia.spring.service.PersonService;
+import com.spring.annotationTest.TudouResource;
+import com.spring.dao.PersonDao;
+import com.spring.service.PersonService;
 public class PersonServiceBean implements PersonService {
     private PersonDao personDao;
     public void save() {

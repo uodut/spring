@@ -1,4 +1,4 @@
-package com.nubia.spring.dao;
+package com.spring.dao;
 public interface PersonDao {
     void print();
 }

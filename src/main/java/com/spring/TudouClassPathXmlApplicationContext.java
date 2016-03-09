@@ -1,4 +1,4 @@
-package com.nubia.spring;
+package com.spring;
 //import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
@@ -13,7 +13,7 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.XPath;
 import org.dom4j.io.SAXReader;
-import com.nubia.spring.annotationTest.TudouResource;
+import com.spring.annotationTest.TudouResource;
 /**
  * 2016年3月3日
  * 

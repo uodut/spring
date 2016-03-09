@@ -1,4 +1,4 @@
-package com.nubia.spring.utils;
+package com.spring.utils;
 import org.apache.log4j.Logger;
 public class Log {
     private static Logger log;

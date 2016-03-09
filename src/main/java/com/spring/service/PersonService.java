@@ -1,4 +1,4 @@
-package com.nubia.spring.service;
+package com.spring.service;
 public interface PersonService {
     void save();
 }

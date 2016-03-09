@@ -1,9 +1,9 @@
-package com.nubia.spring.aopTest;
+package com.spring.aopTest;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import com.nubia.spring.dao.impl.PersonDaoBean;
-import com.nubia.spring.utils.Log;
+import com.spring.dao.impl.PersonDaoBean;
+import com.spring.utils.Log;
 /**
  * 2016年3月4日
  * 

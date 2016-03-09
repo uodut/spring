@@ -1,9 +1,9 @@
-package com.nubia.spring.aopTest;
+package com.spring.aopTest;
 import java.lang.reflect.Method;
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
-import com.nubia.spring.dao.impl.PersonDaoBean;
+import com.spring.dao.impl.PersonDaoBean;
 /**
  * 
  * cglib方式实现代理： 原理是继承要代理的类，实现除了final以外的方法。

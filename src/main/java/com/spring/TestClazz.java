@@ -1,4 +1,4 @@
-package com.nubia.spring;
+package com.spring;
 public interface TestClazz {
     void printInfo();
 }

@@ -1,4 +1,4 @@
-package com.nubia.spring;
+package com.spring;
 
 import java.util.ArrayList;
 import java.util.List;

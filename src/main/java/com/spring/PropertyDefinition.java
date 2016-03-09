@@ -1,4 +1,4 @@
-package com.nubia.spring;
+package com.spring;
 public class PropertyDefinition {
     private String name;
     private String ref;

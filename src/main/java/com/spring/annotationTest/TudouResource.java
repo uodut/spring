@@ -1,4 +1,4 @@
-package com.nubia.spring.annotationTest;
+package com.spring.annotationTest;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

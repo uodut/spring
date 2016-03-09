@@ -1,6 +1,6 @@
-package com.nubia.spring.aopTest;
+package com.spring.aopTest;
 //import com.nubia.spring.dao.PersonDao;
-import com.nubia.spring.dao.impl.PersonDaoBean;
+import com.spring.dao.impl.PersonDaoBean;
 public class TudouAopTest {
     public static void main(String[] args) {
         // JDKProxyFactory proxy = new JDKProxyFactory();

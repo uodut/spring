@@ -1,8 +1,8 @@
-package com.nubia.spring;
+package com.spring;
 //import org.springframework.context.ApplicationContext;
 //import org.springframework.context.support.ClassPathXmlApplicationContext;
 //import com.nubia.spring.dao.impl.PersonDaoBean;
-import com.nubia.spring.service.PersonService;
+import com.spring.service.PersonService;
 public class TestMain {
     public TestMain() {
         // TODO Auto-generated constructor stub

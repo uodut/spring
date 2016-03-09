@@ -1,4 +1,4 @@
-package com.nubia.spring.dao.impl;
+package com.spring.dao.impl;
 public class User {
     private String name;
     private String identity;

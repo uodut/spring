@@ -1,6 +1,6 @@
-package com.nubia.spring.dao.impl;
-import com.nubia.spring.dao.PersonDao;
-import com.nubia.spring.utils.Log;
+package com.spring.dao.impl;
+import com.spring.dao.PersonDao;
+import com.spring.utils.Log;
 public class PersonDaoBean implements PersonDao {
     private String userInfo;
     public void setUser(String userInfo) {

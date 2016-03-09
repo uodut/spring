@@ -1,8 +1,8 @@
-package com.nubia.spring.annotationTest;
+package com.spring.annotationTest;
 //import org.springframework.context.ApplicationContext;
 //import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.nubia.spring.TudouClassPathXmlApplicationContext;
-import com.nubia.spring.service.PersonService;
+import com.spring.TudouClassPathXmlApplicationContext;
+import com.spring.service.PersonService;
 /**
  * 2016年3月4日
  * 
